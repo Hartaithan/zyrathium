@@ -1,0 +1,24 @@
+#zyr-context-menu {
+  position: absolute;
+  z-index: 2147483647;
+  min-width: 180px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: white;
+  padding: 6px 0;
+  font-family: Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 14px;
+  color: #111;
+  display: none;
+}
+
+#zyr-context-menu .menu-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#zyr-context-menu .menu-item:hover {
+  background: rgba(0, 0, 0, 0.06);
+}

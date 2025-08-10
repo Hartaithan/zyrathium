@@ -11,6 +11,7 @@
     {
       "matches": ["https://www.yourworldoftext.com/*"],
       "js": ["main.js"],
+      "css": ["main.css"],
       "run_at": "document_end"
     }
   ]
