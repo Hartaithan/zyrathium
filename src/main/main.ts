@@ -13,7 +13,7 @@ item.addEventListener("click", (ev) => {
 menu.appendChild(item);
 document.documentElement.appendChild(menu);
 
-const showMenu = (x, y) => {
+const showMenu = (x: number, y: number) => {
   menu.style.display = "block";
   const rect = menu.getBoundingClientRect();
   const winW = window.innerWidth;
@@ -38,6 +38,7 @@ document.addEventListener("contextmenu", (event) => {
 
 document.addEventListener("mousedown", (event) => {
   const { target } = event;
+  if (target instanceof Node === false) return;
   if (!menu.contains(target)) hideMenu();
 });
 
