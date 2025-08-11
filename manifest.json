@@ -4,14 +4,14 @@
   "version": "1.0",
   "manifest_version": 3,
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "popup/popup.html",
     "default_icon": "assets/icon.png"
   },
   "content_scripts": [
     {
       "matches": ["https://www.yourworldoftext.com/*"],
-      "js": ["main.js"],
-      "css": ["main.css"],
+      "js": ["main/main.js"],
+      "css": ["main/main.css"],
       "run_at": "document_end"
     }
   ]
