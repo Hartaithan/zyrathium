@@ -1,4 +1,5 @@
 import { createDropdownItem } from "../utils/dropdown";
+import { insert } from "../utils/insert";
 
 const menu = document.createElement("div");
 menu.id = "zyr-context-menu";
@@ -22,6 +23,9 @@ const hideMenu = () => {
 
 const handleReload = () => window.location.reload();
 createDropdownItem({ label: "Reload", onClick: handleReload, menu, hideMenu });
+
+const handleInsert = () => insert({ content: "Hello World!" });
+createDropdownItem({ label: "Insert", onClick: handleInsert, menu, hideMenu });
 
 document.documentElement.appendChild(menu);
 
