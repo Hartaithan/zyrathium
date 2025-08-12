@@ -1,17 +1,7 @@
+import { createDropdownItem } from "../utils/dropdown";
+
 const menu = document.createElement("div");
 menu.id = "zyr-context-menu";
-
-const item = document.createElement("div");
-item.textContent = "Reload";
-item.className = "menu-item";
-item.addEventListener("click", (ev) => {
-  ev.stopPropagation();
-  hideMenu();
-  window.location.reload();
-});
-
-menu.appendChild(item);
-document.documentElement.appendChild(menu);
 
 const showMenu = (x: number, y: number) => {
   menu.style.display = "block";
@@ -29,6 +19,11 @@ const showMenu = (x: number, y: number) => {
 const hideMenu = () => {
   menu.style.display = "none";
 };
+
+const handleReload = () => window.location.reload();
+createDropdownItem({ label: "Reload", onClick: handleReload, menu, hideMenu });
+
+document.documentElement.appendChild(menu);
 
 document.addEventListener("contextmenu", (event) => {
   const { clientX, clientY } = event;
