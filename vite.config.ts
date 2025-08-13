@@ -14,6 +14,8 @@ export default defineConfig({
         mkdirSync("dist/popup", { recursive: true });
         copyFileSync("src/popup/popup.css", "dist/popup/popup.css");
         copyFileSync("src/popup/popup.html", "dist/popup/popup.html");
+
+        mkdirSync("dist/socket", { recursive: true });
       },
     },
   ],
@@ -24,6 +26,7 @@ export default defineConfig({
       input: {
         main: "./src/main/main.ts",
         popup: "./src/popup/popup.ts",
+        socket: "./src/socket/socket.ts",
       },
       output: {
         entryFileNames: "[name]/[name].js",

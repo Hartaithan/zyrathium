@@ -13,6 +13,12 @@
       "js": ["main/main.js"],
       "css": ["main/main.css"],
       "run_at": "document_end"
+    },
+    {
+      "matches": ["https://www.yourworldoftext.com/*"],
+      "js": ["socket/socket.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
     }
   ]
 }
