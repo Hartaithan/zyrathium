@@ -12,7 +12,8 @@
       "matches": ["https://www.yourworldoftext.com/*"],
       "js": ["main/main.js"],
       "css": ["main/main.css"],
-      "run_at": "document_end"
+      "run_at": "document_end",
+      "world": "MAIN"
     },
     {
       "matches": ["https://www.yourworldoftext.com/*"],
