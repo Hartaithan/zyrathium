@@ -1,43 +1,31 @@
+import type { Payload, PayloadEdit } from "../models/socket";
+
 interface InsertParams {
   content: string;
 }
 
-const keyOptions: KeyboardEventInit = {
-  key: "Enter",
-  code: "Enter",
-  keyCode: 13,
-  which: 13,
-  bubbles: true,
-};
-
-const inputOptions: InputEventInit = {
-  inputType: "insertText",
-  bubbles: true,
-};
-
 export const insert = (params: InsertParams) => {
   const { content } = params;
 
-  const input = document.getElementById("world-input");
-  if (!input) {
-    console.error("input not found");
+  if (!window?.interceptedWS?.send) {
+    console.log("intercepted ws not found", window?.interceptedWS);
     return;
   }
 
-  let text = String.raw`${content}`;
-  text.split("").forEach((char, index) => {
-    const timeout = setTimeout(() => {
-      if (char === "\n") {
-        const enterEvent = new KeyboardEvent("keydown", keyOptions);
-        input.dispatchEvent(enterEvent);
-      } else {
-        const inputEvent = new InputEvent("input", {
-          data: char,
-          ...inputOptions,
-        });
-        input.dispatchEvent(inputEvent);
-      }
-      clearTimeout(timeout);
-    }, index * 25);
+  const chars = content.split("");
+  const edits: PayloadEdit[] = chars.map((char, index) => {
+    const ts = new Date().getTime() + (index + 1) * 100;
+    // TODO: find a way to get coords
+    // TODO: find a way to calculate next tile
+    return [0, -5, 1, 14 + index, ts, char, index + 1];
   });
+
+  const payload: Payload = {
+    kind: "write",
+    // TODO: increment this based on actions
+    request_id: 1,
+    edits,
+  };
+
+  window.interceptedWS.send(JSON.stringify(payload));
 };
