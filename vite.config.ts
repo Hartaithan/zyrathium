@@ -7,15 +7,9 @@ export default defineConfig({
       name: "copy-files",
       writeBundle() {
         copyFileSync("src/manifest.json", "dist/manifest.json");
-
-        mkdirSync("dist/main", { recursive: true });
-        copyFileSync("src/main/main.css", "dist/main/main.css");
-
-        mkdirSync("dist/popup", { recursive: true });
-        copyFileSync("src/popup/popup.css", "dist/popup/popup.css");
-        copyFileSync("src/popup/popup.html", "dist/popup/popup.html");
-
-        mkdirSync("dist/socket", { recursive: true });
+        copyFileSync("src/main/main.css", "dist/main.css");
+        copyFileSync("src/popup/popup.css", "dist/popup.css");
+        copyFileSync("src/popup/popup.html", "dist/popup.html");
       },
     },
   ],
@@ -29,7 +23,7 @@ export default defineConfig({
         socket: "./src/socket/socket.ts",
       },
       output: {
-        entryFileNames: "[name]/[name].js",
+        entryFileNames: "[name].js",
       },
       treeshake: false,
     },

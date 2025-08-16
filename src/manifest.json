@@ -4,20 +4,20 @@
   "version": "1.0",
   "manifest_version": 3,
   "action": {
-    "default_popup": "popup/popup.html",
+    "default_popup": "popup.html",
     "default_icon": "icon.png"
   },
   "content_scripts": [
     {
       "matches": ["https://www.yourworldoftext.com/*"],
-      "js": ["main/main.js"],
-      "css": ["main/main.css"],
+      "js": ["main.js"],
+      "css": ["main.css"],
       "run_at": "document_end",
       "world": "MAIN"
     },
     {
       "matches": ["https://www.yourworldoftext.com/*"],
-      "js": ["socket/socket.js"],
+      "js": ["socket.js"],
       "run_at": "document_start",
       "world": "MAIN"
     }
