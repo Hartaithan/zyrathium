@@ -1,6 +1,6 @@
 #zyr-context-menu {
   position: absolute;
-  z-index: 2147483647;
+  z-index: 999999;
   min-width: 180px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
@@ -21,4 +21,22 @@
 
 #zyr-context-menu .menu-item:hover {
   background: rgba(0, 0, 0, 0.06);
+}
+
+#zyr-insert-container {
+  position: absolute;
+  z-index: 99999;
+  left: 12px;
+  bottom: 12px;
+  background: #ffffff;
+  border: 1px solid #121212;
+  border-radius: 8px;
+  padding: 8px 6px;
+  width: 400px;
+  max-height: 600px;
+}
+
+#zyr-insert-field {
+  width: 100%;
+  resize: none;
 }
