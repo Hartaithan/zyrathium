@@ -6,6 +6,7 @@ export const insertFieldIds = {
 export class InsertField {
   private container: HTMLDivElement;
   private textarea: HTMLTextAreaElement;
+  private content: string = "";
   private isVisible = false;
 
   constructor() {
@@ -36,6 +37,10 @@ export class InsertField {
     return this.isVisible;
   }
 
+  public getContent(): string {
+    return this.content;
+  }
+
   public destroy() {
     this.removeEventListeners();
     if (!this.container.parentNode) return;
@@ -43,10 +48,18 @@ export class InsertField {
   }
 
   private setupEventListeners() {
-    // TODO: add textarea listener
+    this.handleOnChange = this.handleOnChange.bind(this);
+    this.textarea.addEventListener("input", this.handleOnChange);
   }
 
   private removeEventListeners() {
-    // TODO: add textarea listener
+    this.textarea.removeEventListener("input", this.handleOnChange);
   }
+
+  private handleOnChange = (event: Event) => {
+    event.stopPropagation();
+    const target = event.target as HTMLTextAreaElement;
+    const { value } = target;
+    this.content = value;
+  };
 }
