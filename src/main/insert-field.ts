@@ -16,6 +16,7 @@ export class InsertField {
     this.textarea = document.createElement("textarea");
     this.textarea.id = insertFieldIds.field;
     this.textarea.placeholder = "Enter your art...";
+    this.textarea.addEventListener("keydown", (e) => e.stopPropagation());
     this.container.appendChild(this.textarea);
 
     this.setupEventListeners();
