@@ -1,17 +1,25 @@
 export const insertFieldIds = {
   field: "zyr-insert-field",
   container: "zyr-insert-container",
+  hide: "zyr-insert-hide-button",
 };
 
 export class InsertField {
   private container: HTMLDivElement;
   private textarea: HTMLTextAreaElement;
+  private button: HTMLButtonElement;
   private content: string = "";
-  private isVisible = false;
+  private isVisible = true;
 
   constructor() {
     this.container = document.createElement("div");
     this.container.id = insertFieldIds.container;
+
+    this.button = document.createElement("button");
+    this.button.id = insertFieldIds.hide;
+    this.button.textContent = "Hide field";
+    this.button.addEventListener("click", () => this.toggle());
+    this.container.appendChild(this.button);
 
     this.textarea = document.createElement("textarea");
     this.textarea.id = insertFieldIds.field;
@@ -24,14 +32,21 @@ export class InsertField {
     document.documentElement.appendChild(this.container);
   }
 
+  public toggle() {
+    if (this.isVisible) this.hide();
+    else this.show();
+  }
+
   public show() {
-    this.container.style.display = "flex";
+    this.textarea.style.display = "inline-block";
     this.isVisible = true;
+    this.button.textContent = "Hide field";
   }
 
   public hide() {
-    this.container.style.display = "none";
+    this.textarea.style.display = "none";
     this.isVisible = false;
+    this.button.textContent = "Show field";
   }
 
   public getVisible(): boolean {
