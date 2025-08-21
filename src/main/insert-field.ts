@@ -17,7 +17,7 @@ export class InsertField {
 
     this.button = document.createElement("button");
     this.button.id = insertFieldIds.hide;
-    this.button.textContent = "Hide field";
+    this.button.textContent = "Hide";
     this.button.addEventListener("click", () => this.toggle());
     this.container.appendChild(this.button);
 
@@ -40,13 +40,13 @@ export class InsertField {
   public show() {
     this.textarea.style.display = "inline-block";
     this.isVisible = true;
-    this.button.textContent = "Hide field";
+    this.button.textContent = "Hide";
   }
 
   public hide() {
     this.textarea.style.display = "none";
     this.isVisible = false;
-    this.button.textContent = "Show field";
+    this.button.textContent = "Show insert field";
   }
 
   public getVisible(): boolean {
