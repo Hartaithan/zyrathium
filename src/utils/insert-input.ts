@@ -16,7 +16,20 @@ const inputOptions: InputEventInit = {
 export const insert = (params: InsertParams) => {
   const { content } = params;
 
-  const input = document.getElementById("world-input");
+  let id = "";
+  const hostname = window?.location?.hostname || "";
+  switch (hostname) {
+    case "www.yourworldoftext.com":
+      id = "world-input";
+      break;
+    case "ourworldoftext.com":
+      id = "textInput";
+      break;
+    default:
+      break;
+  }
+
+  const input = document.getElementById(id);
   if (!input) {
     console.error("input not found");
     return;
