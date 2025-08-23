@@ -2,6 +2,7 @@ export const insertFieldIds = {
   field: "zyr-insert-field",
   container: "zyr-insert-container",
   hide: "zyr-insert-hide-button",
+  storage: "zyr-insert-content",
 };
 
 export class InsertField {
@@ -26,6 +27,9 @@ export class InsertField {
     this.textarea.placeholder = "Enter your art...";
     this.textarea.addEventListener("keydown", (e) => e.stopPropagation());
     this.container.appendChild(this.textarea);
+
+    this.content = localStorage.getItem(insertFieldIds.storage) || "";
+    this.textarea.value = this.content;
 
     this.setupEventListeners();
 
@@ -77,5 +81,6 @@ export class InsertField {
     const target = event.target as HTMLTextAreaElement;
     const { value } = target;
     this.content = value;
+    localStorage.setItem(insertFieldIds.storage, value);
   };
 }
