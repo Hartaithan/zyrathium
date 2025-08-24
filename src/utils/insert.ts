@@ -49,6 +49,6 @@ export const insert = (params: InsertParams) => {
         input.dispatchEvent(inputEvent);
       }
       clearTimeout(timeout);
-    }, index * 25);
+    }, index * 10);
   });
 };
