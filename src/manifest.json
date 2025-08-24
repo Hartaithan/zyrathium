@@ -4,7 +4,6 @@
   "version": "1.0",
   "manifest_version": 3,
   "action": {
-    "default_popup": "popup.html",
     "default_icon": "icon.png"
   },
   "content_scripts": [
@@ -16,15 +15,6 @@
       "js": ["main.js"],
       "css": ["main.css"],
       "run_at": "document_end",
-      "world": "MAIN"
-    },
-    {
-      "matches": [
-        "https://www.yourworldoftext.com/*",
-        "https://ourworldoftext.com/*"
-      ],
-      "js": ["socket.js"],
-      "run_at": "document_start",
       "world": "MAIN"
     }
   ]

@@ -8,8 +8,6 @@ export default defineConfig({
       writeBundle() {
         copyFileSync("src/manifest.json", "dist/manifest.json");
         copyFileSync("src/main/main.css", "dist/main.css");
-        copyFileSync("src/popup/popup.css", "dist/popup.css");
-        copyFileSync("src/popup/popup.html", "dist/popup.html");
       },
     },
   ],
@@ -19,8 +17,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: "./src/main/main.ts",
-        popup: "./src/popup/popup.ts",
-        socket: "./src/socket/socket.ts",
       },
       output: {
         entryFileNames: "[name].js",
