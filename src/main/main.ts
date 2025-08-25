@@ -17,5 +17,16 @@ contextMenu.addItem({ label: "Insert", onClick: handleInsert });
 window.addEventListener("message", (event) => {
   if (event.source !== window) return;
   if (event.data?.from !== "extension") return;
-  console.log("message from the bridge!", event.data);
+  switch (event.data.type) {
+    case "GET_CONTENT": {
+      const content = insertField.getContent();
+      window.postMessage({ from: "main-response", payload: { content } }, "*");
+      break;
+    }
+    case "INSERT_CONTENT": {
+      if (!event.data.content) return;
+      insert({ content: event.data.content });
+      break;
+    }
+  }
 });

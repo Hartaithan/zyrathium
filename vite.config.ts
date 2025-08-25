@@ -18,6 +18,7 @@ export default defineConfig({
       input: {
         main: "./src/main/main.ts",
         bridge: "./src/bridge/bridge.ts",
+        background: "./src/background/background.ts",
       },
       output: {
         entryFileNames: "[name].js",

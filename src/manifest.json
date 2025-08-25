@@ -25,5 +25,14 @@
       "js": ["bridge.js"]
     }
   ],
-  "permissions": ["commands", "activeTab"]
+  "permissions": ["commands", "activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "insert_content": {
+      "suggested_key": { "default": "Ctrl+U", "mac": "Command+U" },
+      "description": "Insert content"
+    }
+  }
 }
