@@ -16,6 +16,14 @@
       "css": ["main.css"],
       "run_at": "document_end",
       "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://www.yourworldoftext.com/*",
+        "https://ourworldoftext.com/*"
+      ],
+      "js": ["bridge.js"]
     }
-  ]
+  ],
+  "permissions": ["commands", "activeTab"]
 }

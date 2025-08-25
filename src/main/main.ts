@@ -13,3 +13,9 @@ const handleInsert = () => {
   insert({ content: content });
 };
 contextMenu.addItem({ label: "Insert", onClick: handleInsert });
+
+window.addEventListener("message", (event) => {
+  if (event.source !== window) return;
+  if (event.data?.from !== "extension") return;
+  console.log("message from the bridge!", event.data);
+});

@@ -17,6 +17,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: "./src/main/main.ts",
+        bridge: "./src/bridge/bridge.ts",
       },
       output: {
         entryFileNames: "[name].js",
