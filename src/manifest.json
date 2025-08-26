@@ -31,7 +31,7 @@
   },
   "commands": {
     "insert_content": {
-      "suggested_key": { "default": "Ctrl+U", "mac": "Command+U" },
+      "suggested_key": { "default": "Alt+V" },
       "description": "Insert content"
     }
   }
