@@ -1,10 +1,10 @@
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
-  window.postMessage({ from: "extension", ...msg }, "*");
+  window.postMessage({ from: "bridge-to-main", ...msg }, "*");
 
   const handler = (event: MessageEvent) => {
     if (event.source !== window) return;
     switch (event.data?.from) {
-      case "main-response":
+      case "main-to-bridge":
         window.removeEventListener("message", handler);
         sendResponse(event.data.payload);
         break;
@@ -15,15 +15,4 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   window.addEventListener("message", handler);
 
   return true;
-});
-
-window.addEventListener("message", (event) => {
-  if (event.source !== window) return;
-  switch (event.data?.from) {
-    case "main-to-extension":
-      chrome.runtime.sendMessage(event.data);
-      break;
-    default:
-      break;
-  }
 });

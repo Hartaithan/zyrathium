@@ -8,12 +8,12 @@ chrome.commands.onCommand.addListener((command) => {
       chrome.tabs.sendMessage(tabId, { type: "GET_CONTENT" }, (response) => {
         if (chrome.runtime.lastError) {
           const message = chrome.runtime.lastError.message;
-          console.warn("unable to read message from main", message);
+          console.warn("failed to receive content", message);
           return;
         }
 
         if (!response?.content) {
-          console.warn("unable to get message from main", response);
+          console.warn("received empty content from content script", response);
           return;
         }
 

@@ -16,11 +16,11 @@ contextMenu.addItem({ label: "Insert", onClick: handleInsert });
 
 window.addEventListener("message", (event) => {
   if (event.source !== window) return;
-  if (event.data?.from !== "extension") return;
+  if (event.data?.from !== "bridge-to-main") return;
   switch (event.data.type) {
     case "GET_CONTENT": {
       const content = insertField.getContent();
-      window.postMessage({ from: "main-response", payload: { content } }, "*");
+      window.postMessage({ from: "main-to-bridge", payload: { content } }, "*");
       break;
     }
     case "INSERT_CONTENT": {
