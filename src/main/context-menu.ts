@@ -67,6 +67,12 @@ export class ContextMenu {
     if (this.menu.parentNode) this.menu.parentNode.removeChild(this.menu);
   }
 
+  private isInteractive(target: EventTarget | null) {
+    const element = target as HTMLElement;
+    const match = "a, button, input, select, textarea, video, audio";
+    return element.matches(match);
+  }
+
   private setupEventListeners() {
     this.handleContextMenu = this.handleContextMenu.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
@@ -90,7 +96,8 @@ export class ContextMenu {
   }
 
   private handleContextMenu = (event: MouseEvent) => {
-    const { clientX, clientY } = event;
+    const { clientX, clientY, target } = event;
+    if (this.isInteractive(target)) return;
     event.preventDefault();
     this.show(clientX, clientY);
   };
